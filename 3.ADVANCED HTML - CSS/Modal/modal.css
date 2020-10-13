@@ -1,0 +1,64 @@
+html {
+    font-family: sans-serif;
+    background-color: rgb(233, 234, 236);
+}
+
+#modalbox {
+    position:absolute;
+    top: 100px;
+    left: 250px;
+    height: 180px;
+    width: 250px;
+    background-color:white;
+    z-index: 1;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    position: relative;
+    margin: 10px 15px;
+    float: left;
+}
+
+#cross {
+    margin: 10px 15px;
+    text-align: right;
+    font-size: 9px;
+}
+
+form {
+    margin: 30px 15px;
+}
+
+label[for="name"] {
+    font-weight: bold;
+}
+
+input {
+    margin-top: 10px;
+    padding-right: 45px;
+}
+
+#bottomBt {
+    float: right;
+    margin: 10px 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#submit {
+    display: inline-block;
+    background-color:#3a38d6;
+    color:white;
+    padding: 5px 10px;
+
+}
+
+#close {
+    display: inline-block;
+    color:#3a38d6;
+    padding: 5px 10px;
+}
+
+
+

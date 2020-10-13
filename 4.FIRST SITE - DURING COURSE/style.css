@@ -1,0 +1,101 @@
+@font-face {
+    font-family: Nunito;
+    src: url(./Nunito/Nunito-Regular.ttf);
+}
+
+body {
+    margin:0;
+    font-family: Nunito;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 5px solid #29CA8E;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
+    height: 70px;
+    padding: 0 10%;
+    
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul li {
+    padding: 0px 10px;
+    height: 70px;
+    box-sizing: border-box;
+}
+
+ul li a {
+    line-height: 70px;
+}
+
+ul li:hover {
+    background: #29CA8E;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    color: black;
+    font-weight: 600;
+}
+
+.phone-number a {
+    color: #717171;
+}
+
+span.fa-phone {
+    color: white;
+    background-color: #29CA8E;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 25px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 250px;
+    border: 1px solid #ebe8e8;
+    padding: 50px;
+    margin: 100px 0;
+}
+
+.number {
+    background-color: #3F51B5;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
+}
+
+h4 {
+    margin: 10px 0;
+}
+
+.box p {
+    font-size: 13px;
+    color: #717171;
+}
