@@ -17,9 +17,10 @@ User wins!
 
 var possibilities = ["rock", "paper", "scissors"];
 
-function play(computerChoice, userChoice) {
-    var computerChoice = possibilities[Math.floor(Math.random() * possibilities.length)];
-    var userChoice = possibilities[Math.floor(Math.random() * possibilities.length)];
+var computerChoice = possibilities[Math.floor(Math.random() * possibilities.length)];
+var userChoice = possibilities[Math.floor(Math.random() * possibilities.length)];
+
+function play() {
     console.log("Computer choice: " + computerChoice);
     console.log("User choice: " + userChoice);
 
@@ -40,4 +41,4 @@ function play(computerChoice, userChoice) {
     }
 };
 
-play();
+play(computerChoice, userChoice);
