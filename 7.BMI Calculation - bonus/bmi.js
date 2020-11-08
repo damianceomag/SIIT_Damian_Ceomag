@@ -34,17 +34,16 @@ var customer2 = {
 var customerList = [customer1, customer2];
 
 for (var i = 0; i < customerList.length; i++) {
-    var bmiCalculator = 0;
-    bmiCalculator = customerList[i].weight / (customerList[i].height ** 2) * 10000;
+    customerList[i].bmi = customerList[i].weight / (customerList[i].height ** 2) * 10000;
 
-    if (bmiCalculator < 18.5) {
+    if (customerList[i].bmi < 18.5) {
         customerList[i].bmiCategory = "Underweight";
-    } else if (bmiCalculator < 25) {
+    } else if (customerList[i].bmi < 25) {
         customerList[i].bmiCategory = "Normal";
-    } else if (bmiCalculator < 30) {
+    } else if (customerList[i].bmi < 30) {
         customerList[i].bmiCategory = "Overweight";
     } else {
         customerList[i].bmiCategory = "Obese";
     };
-    console.log(customerList[i].name + " | " + customerList[i].gender + " | " + bmiCalculator + " | " + customerList[i].bmiCategory);
+    console.log(customerList[i].name + " | " + customerList[i].gender + " | " + customerList[i].bmi + " | " + customerList[i].bmiCategory);
 };
