@@ -38,34 +38,38 @@ window.addEventListener("load", function () {
 
     var addBookButton = document.getElementById("addNewBook");
 
-    addNewBook.onclick = function () {
-        var titleInput = document.getElementsByName("title")[0];
-        var authorInput = document.getElementsByName("author")[0];
+    addBookButton.onclick = function () {
+        var titleInput = document.getElementsByName("title")[0].value;
+        var authorInput = document.getElementsByName("author")[0].value;
 
         var newBook = {
-            title: titleInput.value,
-            author: authorInput.value,
+            title: bookTitle.value,
+            author: bookAuthor.value,
             isRead: false
-        }
-
-        books.push(newBook);
-
-        if ((titleInput.value && authorInput.value) !== "") {
-            displayBook(newBook, bookList);
-        } else {
-            document.getElementById("error").style.display = "block";
         };
+
+        /* H3. display errors, which indicates which field is not completed 
+        - hint: add an element with the error to the html and display it when its needed, using the element's style.display property; */
+
+        if (checkErrors(books, titleInput, authorInput)) {
+            checkErrors(books, titleInput, authorInput)
+        } else {
+            books.push(newBook);
+            displayBook(newBook, bookList);
+
+            // H1. reset the form after adding an item - hint: use reset() method on the form;
+
+            document.getElementById("myForm").reset();
+        };
+
+        /* H4. remove the errors, after the input has value  - hint: use "keypress" event listener on inputs.
+        When the key is pressed hide the errors; */
 
         document.addEventListener("keypress", function () {
             document.getElementById("error").style.display = "none";
+            document.getElementById("error2").style.display = "none";
         });
-    };
-
-    var resetButton = document.getElementById("resetBook");
-    resetButton.onclick = function () {
-        document.getElementById("myForm").reset();
-    };
-
+    }
 });
 
 function displayBook(book, list) {
@@ -86,22 +90,30 @@ function displayBook(book, list) {
     list.appendChild(listItem);
 
     listItem.append(bookTitle, bookAuthor, isReadLabel, isRead);
+}
 
+function checkErrors(verBooks, verTitle, verAuthor) {
 
-};
+    /* H2. validate that the title and author fields have values before adding a new book 
+    - hint: check if the title and the author is different from an empty string; */
 
-/*
-Continue the Book list example that we discussed at the course, and add following functionalities:
+    if ((verTitle && verAuthor) === "") {
+        document.getElementById("error").style.display = "block";
+        return true;
+    } else if (checkDuplicate(verBooks, verTitle, verAuthor)) {
+        document.getElementById("error2").style.display = "block";
+        return true;
+    } else {
+        return false;
+    }
+}
 
-1. reset the form after adding an item - hint: use reset() method on the form - completed
+/* H5. validate duplicate items, if the book already exist in the list (has the same name and author) display an error, 
+also hide this error when the input's value change */
 
-2. validate that the title and author fields have values before adding a new book - hint: check if the title and the author is different from an empty string - completed
-
-3. display errors, which indicates which field is not completed - hint: add an element with the error to the html and display it when its needed,
-using the element's style.display property - completed
-
-4. remove the errors, after the input has value  - hint: use "keypress" event listener on inputs. when the key is pressed hide the errors - completed
-
-5. validate duplicate items, if the book already exist in the list (has the same name and author) display an error, also hide this error when the input's value change * TO DO *
-
-*/
+function checkDuplicate(books, dupTitle, dupAuthor) {
+    for (var i = 0; i < books.length; i++) {
+        if (books[i].title === dupTitle && books[i].author === dupAuthor)
+            return true;
+    }
+}
