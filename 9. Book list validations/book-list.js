@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
         - hint: add an element with the error to the html and display it when its needed, using the element's style.display property; */
 
         if (checkErrors(books, titleInput, authorInput)) {
-            checkErrors(books, titleInput, authorInput)
+            return;
         } else {
             books.push(newBook);
             displayBook(newBook, bookList);
@@ -61,15 +61,17 @@ window.addEventListener("load", function () {
 
             document.getElementById("myForm").reset();
         };
-
-        /* H4. remove the errors, after the input has value  - hint: use "keypress" event listener on inputs.
-        When the key is pressed hide the errors; */
-
-        document.addEventListener("keypress", function () {
-            document.getElementById("error").style.display = "none";
-            document.getElementById("error2").style.display = "none";
-        });
     }
+    /* H4. remove the errors, after the input has value  - hint: use "keypress" event listener on inputs.
+        When the key is pressed hide the errors; */
+    document.getElementsByName("title")[0].document.addEventListener("keypress", function () {
+        document.getElementById("error").style.display = "none";
+        document.getElementById("error2").style.display = "none";
+    })
+    document.getElementsByName("author")[0].document.addEventListener("keypress", function () {
+        document.getElementById("error").style.display = "none";
+        document.getElementById("error2").style.display = "none";
+    })
 });
 
 function displayBook(book, list) {
@@ -97,10 +99,10 @@ function checkErrors(verBooks, verTitle, verAuthor) {
     /* H2. validate that the title and author fields have values before adding a new book 
     - hint: check if the title and the author is different from an empty string; */
 
-    if ((verTitle && verAuthor) === "") {
+    if (verTitle === "" && verAuthor === "") {
         document.getElementById("error").style.display = "block";
         return true;
-    } else if (checkDuplicate(verBooks, verTitle, verAuthor)) {
+    } else if (isDuplicate(verBooks, verTitle, verAuthor)) {
         document.getElementById("error2").style.display = "block";
         return true;
     } else {
@@ -111,7 +113,7 @@ function checkErrors(verBooks, verTitle, verAuthor) {
 /* H5. validate duplicate items, if the book already exist in the list (has the same name and author) display an error, 
 also hide this error when the input's value change */
 
-function checkDuplicate(books, dupTitle, dupAuthor) {
+function isDuplicate(books, dupTitle, dupAuthor) {
     for (var i = 0; i < books.length; i++) {
         if (books[i].title === dupTitle && books[i].author === dupAuthor)
             return true;
