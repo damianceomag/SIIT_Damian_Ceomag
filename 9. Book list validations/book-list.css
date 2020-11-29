@@ -68,3 +68,11 @@ form {
     color: red;
     margin: 1px;
 }
+
+#error2 {
+    display: none;
+
+    font-weight: 600;
+    color: red;
+    margin: 1px;
+}
